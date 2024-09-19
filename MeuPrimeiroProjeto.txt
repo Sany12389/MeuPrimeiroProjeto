@@ -1,0 +1,31 @@
+PedraPapelTesouro
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Escolha: 1 para Pedra, 2 para Papel, 3 para Tesoura (0 para sair)");
+        
+        while (true)
+        {
+            int playerChoice = int.Parse(Console.ReadLine());
+            if (playerChoice == 0) break;
+
+            Random rnd = new Random();
+            int computerChoice = rnd.Next(1, 4);
+
+            Console.WriteLine($"Você: {playerChoice}, Computador: {computerChoice}");
+            Console.WriteLine(GetResult(playerChoice, computerChoice));
+        }
+
+        Console.WriteLine("Obrigado por jogar!");
+    }
+
+    static string GetResult(int player, int computer)
+    {
+        if (player == computer) return "Empate!";
+        return (player - computer + 3) % 3 == 1 ? "Você venceu!" : "Você perdeu!";
+    }
+}
